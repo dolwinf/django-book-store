@@ -72,6 +72,9 @@ TEMPLATES = [
     },
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['*']
+
 WSGI_APPLICATION = 'BookStore.wsgi.application'
 
 
