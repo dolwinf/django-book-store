@@ -50,17 +50,14 @@ function Home() {
                       justifyContent: "space-around",
                     }}
                   >
-                    <Link to="#" className="btn btn-primary">
-                      View details
-                    </Link>
                     <Link to="#" className="btn btn-info">
-                      Like
+                      Add to Wishlist
                     </Link>
-                    <Link to="#" className="btn btn-warning">
-                      Edit details
-                    </Link>
-                    <Link to="#" className="btn btn-danger">
-                      Delete
+                    <Link
+                      to={`/EditBook/${item.id}`}
+                      className="btn btn-warning"
+                    >
+                      Edit Book details
                     </Link>
                   </div>
                 </div>
