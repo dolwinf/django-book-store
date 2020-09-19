@@ -22,13 +22,13 @@ const navBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <Link to="" className="nav-link">
+              <Link to="/Add" className="nav-link">
                 Add Books <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="" className="nav-link">
-                Liked Books
+            <li className="nav-item active">
+              <Link to="/Wishlist" className="nav-link">
+                WishList<span className="sr-only">(current)</span>
               </Link>
             </li>
           </ul>
