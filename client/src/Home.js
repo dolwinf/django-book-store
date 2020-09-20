@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./App.css";
 function Home() {
+  const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8000/api/books/")
@@ -13,6 +14,11 @@ function Home() {
       });
   }, []);
 
+  // const addToWishlist = (id) => {
+  //   console.log("clicked");
+  //   localStorage.setItem(`BookStore-${id}`, id);
+  //   history.push("/Wishlist");
+  // };
   return (
     <div className="container">
       {data
@@ -50,9 +56,12 @@ function Home() {
                       justifyContent: "space-around",
                     }}
                   >
-                    <Link to="#" className="btn btn-info">
+                    {/* <button
+                      className="btn btn-info"
+                      onClick={() => addToWishlist(item.id)}
+                    >
                       Add to Wishlist
-                    </Link>
+                    </button> */}
                     <Link
                       to={`/EditBook/${item.id}`}
                       className="btn btn-warning"

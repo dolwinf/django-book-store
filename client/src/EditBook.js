@@ -101,6 +101,7 @@ function EditBook(props) {
               </label>
             </div>
           </div>
+
           <button
             onClick={(e) => editBook(e)}
             className="btn btn-warning"
@@ -108,6 +109,7 @@ function EditBook(props) {
           >
             Edit Book Details
           </button>
+          <br />
         </form>
       </div>
     );

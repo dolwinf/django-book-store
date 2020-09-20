@@ -26,11 +26,11 @@ const navBar = () => {
                 Add Books <span className="sr-only">(current)</span>
               </Link>
             </li>
-            <li className="nav-item active">
+            {/* <li className="nav-item active">
               <Link to="/Wishlist" className="nav-link">
                 WishList<span className="sr-only">(current)</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
