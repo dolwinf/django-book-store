@@ -18,6 +18,11 @@ function EditBook(props) {
       .then((results) => {
         console.log(results);
         setData(results);
+        setTitle(results.title);
+        setDescription(results.description);
+        setAuthor(results.author);
+        setPrice(parseFloat(results.price));
+        setImage(results.image);
       });
   };
   useEffect(() => {
@@ -36,7 +41,7 @@ function EditBook(props) {
                 className="form-control"
                 id="title"
                 placeholder="Book Title"
-                value={data.title}
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
@@ -47,7 +52,7 @@ function EditBook(props) {
                 className="form-control"
                 id="author"
                 placeholder="Author name"
-                value={data.author}
+                value={author}
                 onChange={(e) => setAuthor(e.target.value)}
               />
             </div>
@@ -59,7 +64,7 @@ function EditBook(props) {
               className="form-control"
               id="description"
               placeholder="Description"
-              value={data.description}
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
@@ -72,8 +77,8 @@ function EditBook(props) {
                 className="form-control"
                 id="inputCity"
                 placeholder="Amount in USD"
-                value={data.price}
-                onChange={(e) => setPrice(parseFloat(e.target.value))}
+                value={String(price)}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
           </div>
@@ -122,35 +127,35 @@ function EditBook(props) {
       .then((data) => {
         setImage(data.url);
 
-        console.log(title, description, author, price);
-        data.url &&
-          fetch(
-            `http://localhost:8000/api/book-detail/${props.match.params.id}/`,
-            {
-              method: "put",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                title,
-                description,
-                author,
-                price,
-                image: data.url,
-              }),
+        console.log(title, description, author, price, data.url);
+
+        fetch(
+          `http://localhost:8000/api/book-detail/${props.match.params.id}/`,
+          {
+            method: "put",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title,
+              description,
+              author,
+              price: parseFloat(price),
+              image: data.url,
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.error) {
+              console.log(data.error);
+            } else {
+              history.push("/");
             }
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.error) {
-                console.log(data.error);
-              } else {
-                history.push("/");
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
