@@ -13,7 +13,9 @@ function EditBook(props) {
   const history = useHistory();
 
   const fetchBook = () => {
-    fetch(`http://localhost:8000/api/book-detail/${props.match.params.id}/`)
+    fetch(
+      `https://pure-bastion-33744.herokuapp.com/api/book-detail/${props.match.params.id}/`
+    )
       .then((res) => res.json())
       .then((results) => {
         console.log(results);
@@ -33,6 +35,8 @@ function EditBook(props) {
     return (
       <div className="container">
         <form>
+          <h4>Edit Book Details</h4>
+          <br />
           <div className="form-row">
             <div className="form-group col-md-6">
               <label htmlFor="title">Title</label>
@@ -104,10 +108,10 @@ function EditBook(props) {
 
           <button
             onClick={(e) => editBook(e)}
-            className="btn btn-warning"
+            className="btn btn-info"
             style={{ marginTop: "20px" }}
           >
-            Edit Book Details
+            Submit Changes
           </button>
           <br />
         </form>
@@ -132,7 +136,7 @@ function EditBook(props) {
         console.log(title, description, author, price, data.url);
 
         fetch(
-          `http://localhost:8000/api/book-detail/${props.match.params.id}/`,
+          `https://pure-bastion-33744.herokuapp.com/api/book-detail/${props.match.params.id}/`,
           {
             method: "put",
             headers: {
@@ -165,7 +169,7 @@ function EditBook(props) {
   };
 
   const deleteBook = (id) => {
-    fetch(`http://localhost:8000/api/book-detail/${id}/`, {
+    fetch(`https://pure-bastion-33744.herokuapp.com/api/book-detail/${id}/`, {
       method: "delete",
     }).then(() => history.push("/"));
   };
@@ -174,21 +178,21 @@ function EditBook(props) {
       <div
         className="card"
         style={{
-          width: "25rem",
+          width: "70rem",
 
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: "30px",
-          marginBottom: "50px",
+          marginBottom: "80px",
         }}
         key={data.id}
       >
-        <img
+        {/* <img
           className="card-img-top"
           style={{ height: "180px" }}
           src={data.image}
           alt="Card image cap"
-        />
+        /> */}
         <div className="card-body">
           <h5 className="card-title">{data.title}</h5>
           <p className="card-text">{data.description}</p>

@@ -6,7 +6,7 @@ const navBar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="" className="navbar-brand">
-          Bookstore
+          Book Attic
         </Link>
         <button
           className="navbar-toggler"
@@ -23,7 +23,7 @@ const navBar = () => {
           <ul className="navbar-nav">
             <li className="nav-item active">
               <Link to="/Add" className="nav-link">
-                Add Books <span className="sr-only">(current)</span>
+                Add Book Listing <span className="sr-only">(current)</span>
               </Link>
             </li>
             {/* <li className="nav-item active">

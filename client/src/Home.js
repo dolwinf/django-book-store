@@ -6,7 +6,7 @@ function Home() {
   const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8000/api/books/")
+    fetch("https://pure-bastion-33744.herokuapp.com/api/books/")
       .then((res) => res.json())
       .then((results) => {
         console.log(results);
@@ -36,19 +36,19 @@ function Home() {
               >
                 <img
                   className="card-img-top"
-                  style={{ height: "180px" }}
+                  style={{ height: "400px" }}
                   src={item.image}
                   alt="Card image cap"
                 />
                 <div className="card-body">
                   <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.description}</p>
+
                   <p className="card-text">
-                    <b>Author:</b>
+                    <b>Author:</b>&nbsp;
                     {item.author}
                   </p>
                   <p className="card-text">
-                    <b>Price:</b>${item.price}
+                    <b>Price:</b>&nbsp;${item.price}
                   </p>
                   <div
                     style={{
@@ -66,7 +66,7 @@ function Home() {
                       to={`/EditBook/${item.id}`}
                       className="btn btn-warning"
                     >
-                      Edit Book details
+                      View Book details
                     </Link>
                   </div>
                 </div>

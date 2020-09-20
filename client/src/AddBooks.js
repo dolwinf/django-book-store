@@ -25,7 +25,7 @@ function AddBooks() {
 
         console.log(title, description, author, price);
         data.url &&
-          fetch("http://localhost:8000/api/books/", {
+          fetch("https://pure-bastion-33744.herokuapp.com/api/books/", {
             method: "post",
             headers: {
               "Content-Type": "application/json",
